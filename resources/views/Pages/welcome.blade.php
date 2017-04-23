@@ -11,21 +11,14 @@
 @endsection
 
 @section('content')
-    <center><h1>Template</h1></center>
-    <div class="row">
-    	@foreach ($posts as $posts)
-    	<div class = "post">
-    		<h3>{{$posts->title}}</h3>
-    		<p>
-    			{{$posts->body}}
-    		</p>
-    	</div> 
-    	@endforeach	  	
-    </div>
+<table id="outside">
+    <tr><td id="t1">one</td></tr>
+    <tr><td id="t2">two</td></tr>
+</table>
 @endsection
 
 @section('page_level_js')
-    
+ <script src="scripts/main.js"></script>      
 @endsection
 
 @section('page_level_script')

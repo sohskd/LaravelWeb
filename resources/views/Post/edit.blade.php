@@ -12,10 +12,11 @@
 
 @section('content')
     <div class="row">
+        {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
         <div class="col-md-8">
             <h1>{{ $post->title }}</h1>
-            <input name="eventId" type="hidden" class="form-control" value={{$post->id}}> 
-            <textarea name="description" class="form-control" rows="5" placeholder="">{{ $post->body }}</textarea>
+            <input name="title" type="hidden" class="form-control" value={{$post->title}}> 
+            <textarea name="body" class="form-control" rows="5" placeholder="">{{ $post->body }}</textarea>
             <label class="help-block font-xs">Tell us more about your event</label>           
         </div>
 
@@ -39,10 +40,10 @@
                         </a>
                     </div>
                     <div class="col-sm-6">
-                        {!! Html::linkRoute('posts.destroy', 'Save', array($post->id), array('class' => 'btn btn-success btn-block')) !!}
+                    	{{ Form::submit('Save Changes', ['class' => 'btn btn-success btn-block'])}}
+                        <!--{!! Html::linkRoute('posts.update', 'Save', array($post->id), array('class' => 'btn btn-success btn-block')) !!}-->
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

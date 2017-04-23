@@ -38,8 +38,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Sup people! Welcome to Desmond Web!</div>
+                <div class="title">Hi! im winsty! I wnat to play with tiggu!</div>
             </div>
         </div>
-    </body>
+    </body> 
 </html>

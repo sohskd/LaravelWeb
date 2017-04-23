@@ -17,7 +17,7 @@
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-user dropdown-dark">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                           
+                           <span class="username username-hide-mobile">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
                             <li>
@@ -81,6 +81,32 @@
                             <span class="arrow"></span>
                         </a>
                     </li>
+                    <li class="menu-dropdown classic-menu-dropdown <?php if(Request::is('posts')){ echo "active"; }?>">
+                        <a href="/TwitterPage">
+                            <i class="icon-calendar"></i> Twitter Tweets
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="menu-dropdown classic-menu-dropdown <?php if(Request::is('posts')){ echo "active"; }?>">
+                        <a href="https://api.instagram.com/oauth/authorize/?client_id=4ffe9786b63e40f4854d767be45b9ea0&redirect_uri=http://localhost:8000/instaPage&response_type=code&scope=public_content">
+                            <i class="icon-calendar"></i> Instagram Page
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="menu-dropdown classic-menu-dropdown <?php if(Request::is('posts')){ echo "active"; }?>">
+                        <a href="/FlickrPage">
+                            <i class="icon-calendar"></i> Flickr Page
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    @if(Auth::user()->role === "admin")
+                    <li class="menu-dropdown classic-menu-dropdown <?php if(Request::is('posts')){ echo "active"; }?>">
+                        <a href="/showAllUsers">
+                            <i class="icon-calendar"></i> Configure Users
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    @endif
                     
                 </ul>
             </div>

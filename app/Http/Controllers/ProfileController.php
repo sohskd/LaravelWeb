@@ -5,13 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Post;
-use Validator;
-use App\Http\Controllers\Controller;
-use Session;
-use Auth;
 
-class PostController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,17 +18,15 @@ class PostController extends Controller
     {
         //
         $user = Auth::user();
-		$path = public_path();
-		$sportsKML = simplexml_load_file($path . '/kml/PLAYSG.kml');
+			
         $posts = $user->getPostByUser()->orderBy('id', 'desc')->paginate(3);
-        $data = array(       
-        	'sportsKML' => $sportsKML, 
-            'posts' => $posts,
+        $data = array(    
+            'posts' => $posts
         );
         return view('Post.index')->with($data);
     }
-
-    /**
+	
+	/**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -43,8 +36,8 @@ class PostController extends Controller
         //
         return view('Post.create');
     }
-
-    /**
+	
+	/**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -71,29 +64,7 @@ class PostController extends Controller
         return redirect()->route('posts.show', $post->id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $post = Post::find($id);
-        $data = array(
-            'post' => $post
-        );
-
-        return view('Post.show')->with($data);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+	public function edit($id)
     {
         //find the posts in database and save as variable
         $post = Post::find($id);
@@ -130,21 +101,5 @@ class PostController extends Controller
         //redirect with flash data to posts.show
         return redirect()->route('posts.show', $post->id);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-        $post = Post::find($id);
-        $post->delete();
-
-        // redirect
-        Session::flash('success', 'Successfully deleted the post!');
-        return Redirect()->route('posts.index');
-    }
+    
 }

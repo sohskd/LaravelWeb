@@ -14,6 +14,10 @@
     <div class="row">
 		<div class="col-md-10">
 			<h1>All Posts</h1>
+			<div>{{ Auth::getuser()}}</div>
+			
+			
+			<div></div>
 		</div>
 
 		<div class="col-md-2">
@@ -35,10 +39,14 @@
 					<th></th>
 				</thead>
 
-				<tbody>
-					
+				<tbody>					
+					<div>{{ $posts }}</div>
+					<div>{{Auth::check()}}</div>
+				
 					@foreach ($posts as $post)
-						
+					<!-- {{ $sportsKML->Document->Folder->Placemark->name }}
+					-->
+						<!--{{ $post }} -->
 						<tr>
 							<th>{{ $post->id }}</th>
 							<td>{{ $post->title }}</td>
@@ -51,12 +59,15 @@
 
 				</tbody>
 			</table>
+			<div class="text-center">
+				{!! $posts->links(); !!}
+			</div>
 		</div>
 	</div>
+	<button> Change User </button>
 @endsection
 
 @section('page_level_js')
-    
 @endsection
 
 @section('page_level_script')

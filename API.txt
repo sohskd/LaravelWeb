@@ -1,0 +1,32 @@
+curl -F "client_id=4ffe9786b63e40f4854d767be45b9ea0" -F "client_secret=8b8ca3f5b4664777985f93a8ca38f4da" -F "grant_type=authorization_code" -F "redirect_uri=http://localhost:8000/instaPage" -F "code=cd8ec5655c154c6a8dabe231230ae882" https://api.instagram.com/oauth/access_token
+curl -F "client_id=4ffe9786b63e40f4854d767be45b9ea0&client_secret=8b8ca3f5b4664777985f93a8ca38f4da&grant_type=authorization_code&redirect_uri=http://localhost:8000/instaPage&code=cd8ec5655c154c6a8dabe231230ae882" https://api.instagram.com/oauth/access_token
+   
+
+curl -F 'client_id=4ffe9786b63e40f4854d767be45b9ea0' \
+    -F 'client_secret=8b8ca3f5b4664777985f93a8ca38f4da' \
+    -F 'grant_type=authorization_code' \
+    -F 'redirect_uri=http://localhost:8000/instaPage' \
+    -F 'code=cd8ec5655c154c6a8dabe231230ae882' \
+    https://api.instagram.com/oauth/access_token
+
+
+<div>{{ $client_id }}</div>
+    <div>{{ $client_secret }}</div>
+    <div>{{ $grant_type }}</div>
+    <div>{{ $redirect_uri }}</div>
+    <div>{{ $code }}</div>
+
+https://api.instagram.com/v1/locations/search?lat=48.858844&lng=2.294351&access_token=803450264.4ffe978.8ac7c8d0497544978c90953cac684f2c
+https://api.instagram.com/v1/locations/{location-id}/media/recent?access_token=803450264.4ffe978.8ac7c8d0497544978c90953cac684f2c
+
+https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg
+https://farm1.staticflickr.com/656/33007332980_cc2ceb8004_m.jpg
+http://farm{farmid}.staticflickr.com/{server-id}/{id}_{secret}{size}.jpg
+
+farm-id: 1
+server-id: 2
+photo-id: 1418878
+secret: 1e92283336
+size: m
+
+ { "id": "33007332980", "owner": "60026216@N00", "secret": "cc2ceb8004", "server": "656", "farm": 1, "title": "Many books for sale at Bras Basah Complex.", "ispublic": 1, "isfriend": 0, "isfamily": 0 }

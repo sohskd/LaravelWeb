@@ -17,14 +17,28 @@ Route::get('/', function () {
     //echo "hello";
 });
 
-Route::get('About', 'pagesController@getAbout');
+Route::group(['middleware' => ['auth']], function(){
+	Route::get('About', 'pagesController@getAbout');
+	Route::get('dashboard', 'pagesController@getDashboard');
+	Route::get('TwitterPage', 'pagesController@getTwitterPage');
+	
+	Route::get('showAllUsers', 'CustomiseUserController@getAllUsers');
+	Route::post('showAllUsers', 'CustomiseUserController@updateAllUsers');
+	
+	Route::get('instaPage', 'InstagramController@processInstagramCode');
+	Route::get('FlickrPage', 'InstagramController@getFlickrPage');
+	Route::post('processflickrPhotoSearch', 'InstagramController@processflickrPhotoSearch');
 
-Route::get('dashboard', 'pagesController@getDashboard');
-
+	Route::resource('posts', 'PostController');
+	//Route::resource('customers', 'PostController');
+});
 //Route::get('create', 'PostController@create');
 
-Route::resource('posts', 'PostController');
 
+
+Route::auth();
+
+//Route::get('/home', 'HomeController@index');
 
 
 
@@ -45,3 +59,4 @@ Route::resource('posts', 'PostController');
 // 	return view('test1');
 
 // });
+
